@@ -1,0 +1,31 @@
+train_type: 'TI'
+loss: 'l2'
+seed: ${seed}
+save_path: ${exp_name}
+
+ti_epochs: 100
+
+resolution: ${resolution}
+
+log_every: 10
+
+placeholder:
+  placeholder_token: "<s1>"
+  init_token: null
+  num_vectors: 2
+
+optimizer_type: 'adamw'
+dtype: ${dtype}
+
+optimizer:
+  lr: 0
+  weight_decay: 0.00001
+  betas: [0.9, 0.999]
+
+ti_scheduler:
+  T_0: null
+  T_mult: 1
+  eta_max: 0.0005
+  T_up_ratio: 0.2
+  gamma: 1.
+  last_epoch: -1
