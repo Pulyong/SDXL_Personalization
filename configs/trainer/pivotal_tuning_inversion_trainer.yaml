@@ -3,8 +3,8 @@ loss: 'l2'
 seed: ${seed}
 save_path: ${exp_name}
 
-ti_epochs: 10
-pt_epochs: 20
+ti_epochs: 20
+pt_epochs: 10
 
 resolution: ${resolution}
 
@@ -26,7 +26,7 @@ optimizer:
 ti_scheduler:
   T_0: null
   T_mult: 1
-  eta_max: 0.0005
+  eta_max: 0.00005
   T_up_ratio: 0.2
   gamma: 1.
   last_epoch: -1
@@ -34,7 +34,7 @@ ti_scheduler:
 scheduler:
   T_0: null
   T_mult: 1
-  eta_max_unet: 0.0005
+  eta_max_unet: 0.00005
   eta_max_text_encoder1: 0
   eta_max_text_encoder2: 0
   T_up_ratio: 0.2

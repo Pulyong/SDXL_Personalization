@@ -1,5 +1,6 @@
 from .train_text_inversion import TextualInversionTrainer
 from .train_perform_tuning import PerformTuningTrainer
+from .train_perform_tuning_dora import DoraPerformTuningTrainer
 from dotmap import DotMap
 from omegaconf import OmegaConf
 
@@ -31,5 +32,14 @@ def build_trainer(cfg,
             sd_model=sd,
             placeholder_ids=placeholder_ids
         )
-
+    else:
+        trainer = DoraPerformTuningTrainer(
+            cfg=cfg,
+            device=device,
+            train_loader=train_loader,
+            logger=logger,
+            sd_model=sd,
+            placeholder_ids=placeholder_ids
+        )
+        
     return trainer

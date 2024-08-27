@@ -45,9 +45,10 @@ def main(args):
 
     patch_pipe(
         pipeline,
-        args.model_path
-    )
-
+        args.model_path,
+        patch_text= False,
+        patch_unet= False
+        )
     prompt = args.custom_prompt or "<s1> <s1_1> A profile sitting next to a tree with a Christmas spirit."
     prompt2 = prompt
     prompt = str(prompt)
