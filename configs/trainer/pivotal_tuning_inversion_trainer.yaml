@@ -3,8 +3,8 @@ loss: 'l2'
 seed: ${seed}
 save_path: ${exp_name}
 
-ti_epochs: 20
-pt_epochs: 10
+ti_epochs: 30
+pt_epochs: 20
 
 resolution: ${resolution}
 
