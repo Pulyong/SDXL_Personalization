@@ -92,7 +92,7 @@ def run(args):
 
     for i in range(10):
         image = refiner(
-            prompt=f"{placeholder_token} headshot photo style, christmas background",
+            prompt=f"Dog headshot photo style, christmas background",
             num_inference_steps=40,
             denoising_start=0.8,
             image=images[i],
