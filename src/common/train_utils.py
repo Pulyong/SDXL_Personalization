@@ -38,6 +38,7 @@ def add_placeholder_to_tokenizer(tokenizer,placeholder_token,init_token,num_vect
     
     for i in range(1, num_vectors):
         additional_tokens.append(f"{placeholder_token[:-1]}_{i}>")
+        print(f"{placeholder_token[:-1]}_{i}>")
     placeholder_tokens += additional_tokens
     
     num_added_tokens = tokenizer.add_tokens(placeholder_tokens)

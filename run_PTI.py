@@ -31,10 +31,10 @@ def run(args):
     exp_name = str(cfg.exp_name)
     ### make exp folder ###
 
-    os.makedirs('./model_dumps/model/'+exp_name,exist_ok=True)
+    os.makedirs('/content/drive/MyDrive/KoreaUniv/MLV_Lab/Summer_Project/model_dumps/model/'+exp_name,exist_ok=True)
 
     #######################
-    img_path = '/home2/kkms4641/GenerativeModel_Tobigs_Conference_20-21/model_dumps/vis/'
+    img_path = '/content/drive/MyDrive/KoreaUniv/MLV_Lab/Summer_Project/model_dumps/vis/'
     os.makedirs(img_path+exp_name,exist_ok=True)
     set_global_seeds(cfg.seed)
     device = torch.device(cfg.device)
@@ -66,7 +66,7 @@ def run(args):
     
     
     # Debug <s1>
-    prompt = f"{placeholder_token} <s1>_1 <s1>_2 headshot photo style, christmas background"
+    prompt = f"{placeholder_token} <s1_1> <s1_2> headshot photo style, christmas background"
     from diffusers import DiffusionPipeline
     images = []
     for i in range(10):

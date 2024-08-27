@@ -1,7 +1,7 @@
 type: "TextualInversion"
 
 train_dataset:
-  data_root: './data/dog1'
+  data_root: '/content/drive/MyDrive/KoreaUniv/MLV_Lab/Summer_Project/Dataset/Dog1/segmentation'
   learnable_property: "object"  # [object, style]
   size: ${resolution}
   repeats: 20
