@@ -233,7 +233,7 @@ class PerformTuningTrainer():
                 self.step += 1
             self.epoch += 1
         save_path = str(cfg.save_path)
-        save_path = f'/home2/kkms4641/GenerativeModel_Tobigs_Conference_20-21/model_dumps/model/{save_path}/'
+        save_path = f'/content/drive/MyDrive/KoreaUniv/MLV_Lab/Summer_Project/model_dumps/model/{save_path}/'
 
         placeholder_tokens = self.tokenizer1.convert_ids_to_tokens(self.placeholder_ids)
         save_all(self.unet,self.text_encoder1,self.text_encoder2,save_path=save_path,placeholder_token_ids=self.placeholder_ids,placeholder_tokens=placeholder_tokens,

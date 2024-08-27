@@ -66,7 +66,7 @@ def run(args):
     
     
     # Debug <s1>
-    prompt = f"{placeholder_token} <s1_1> <s1_2> headshot photo style, christmas background"
+    prompt = f"{placeholder_token} <s1_1> headshot photo style, christmas background"
     from diffusers import DiffusionPipeline
     images = []
     for i in range(10):
