@@ -14,7 +14,7 @@ def main(args):
     def eval_resolver(s: str):
         return eval(s)
     omegaconf.OmegaConf.register_new_resolver("eval", eval_resolver)
-
+    exp_name = str(cfg.exp_name)
     sd_model = build_stable_diffusion(cfg.model)
     device = "cuda:0"
 
@@ -82,7 +82,7 @@ def main(args):
             denoising_start=0.8,
             image=images[i],
         ).images[0]
-        image.save(f'{img_path}/exp{i}.png', 'png')
+        image.save(f'{img_path}/{exp_name}/exp_test_{i}.png','png')
 
 
 if __name__ == "__main__":
