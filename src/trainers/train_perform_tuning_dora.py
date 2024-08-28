@@ -87,9 +87,9 @@ class DoraPerformTuningTrainer():
         #self.unet.requires_grad_(False)
         
         self.unet.add_adapter(unet_lora_config)
-        unet_lora_params = filter(lambda p: p.requires_grad, self.unet.parameters())
+        unet_lora_params = list(filter(lambda p: p.requires_grad, self.unet.parameters()))
         params_to_optimize = [
-        {"params": itertools.chain(*unet_lora_params), "lr": lora_cfg.unet_lr},
+        {"params": unet_lora_params, "lr": lora_cfg.unet_lr},
         ]
         
         self.text_encoder1.requires_grad_(False)
@@ -255,7 +255,7 @@ class DoraPerformTuningTrainer():
         torch.save(learned_embeds_dict, ti_path)
         print("Ti saved to ", ti_path)
         
-        self.unet.save_adapter("save_path", "unet_dora")
+        self.unet.save_pretrained(save_path+'unet_dora')
         
         '''
         save_all(self.unet,self.text_encoder1,self.text_encoder2,save_path=save_path,placeholder_token_ids=self.placeholder_ids,placeholder_tokens=placeholder_tokens,

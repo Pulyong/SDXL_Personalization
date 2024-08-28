@@ -4,7 +4,7 @@ seed: ${seed}
 save_path: ${exp_name}
 
 ti_epochs: 30
-pt_epochs: 20
+pt_epochs: 5
 
 resolution: ${resolution}
 

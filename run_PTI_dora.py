@@ -66,7 +66,7 @@ def run(args):
     
     
     # Debug <s1>
-    prompt = f"{placeholder_token} <s1_1> headshot photo style, christmas background"
+    prompt = f"{placeholder_token} <s1_1> A profile sitting next to a tree with a Christmas spirit."
     from diffusers import DiffusionPipeline
     images = []
     for i in range(10):
@@ -92,7 +92,7 @@ def run(args):
 
     for i in range(10):
         image = refiner(
-            prompt=f"{placeholder_token} headshot photo style, christmas background",
+            prompt=f"realistic, Profile, Christmas, Christmas tree",
             num_inference_steps=40,
             denoising_start=0.8,
             image=images[i],
