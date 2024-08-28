@@ -11,6 +11,14 @@ import torch.nn.functional as F
 import itertools
 from diffusers import DiffusionPipeline
 from peft import LoraConfig
+from diffusers.loaders import StableDiffusionLoraLoaderMixin
+from peft.utils import get_peft_model_state_dict, set_peft_model_state_dict
+from diffusers.utils import (
+    check_min_version,
+    convert_state_dict_to_diffusers,
+    convert_unet_state_dict_to_peft,
+    is_wandb_available,
+)
 import safetensors
 
 from src.models.adapter import *
@@ -255,8 +263,11 @@ class DoraPerformTuningTrainer():
         torch.save(learned_embeds_dict, ti_path)
         print("Ti saved to ", ti_path)
         
-        self.unet.save_pretrained(save_path+'unet_dora')
-        
+        unet_lora_layers_to_save = convert_state_dict_to_diffusers(get_peft_model_state_dict(self.unet))
+        StableDiffusionLoraLoaderMixin.save_lora_weights(
+                save_path,
+                unet_lora_layers=unet_lora_layers_to_save
+            )
         '''
         save_all(self.unet,self.text_encoder1,self.text_encoder2,save_path=save_path,placeholder_token_ids=self.placeholder_ids,placeholder_tokens=placeholder_tokens,
                  target_replace_module_text={"CLIPAttention"},target_replace_module_unet={"CrossAttention", "Attention", "GEGLU"})

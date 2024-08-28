@@ -14,7 +14,10 @@ def main(args):
     def eval_resolver(s: str):
         return eval(s)
     omegaconf.OmegaConf.register_new_resolver("eval", eval_resolver)
-
+    exp_name = str(cfg.exp_name)
+    img_path = '/content/drive/MyDrive/KoreaUniv/MLV_Lab/Summer_Project/model_dumps/vis/'
+    os.makedirs(img_path+cfg.exp_name,exist_ok=True)
+    
     sd_model = build_stable_diffusion(cfg.model)
     device = "cuda:0"
 
@@ -49,6 +52,8 @@ def main(args):
         patch_text= False,
         patch_unet= False
         )
+    
+    pipeline.unet.from_pretrained('/content/drive/MyDrive/KoreaUniv/MLV_Lab/Summer_Project/model_dumps/model/train1_dora/unet_dora')
     prompt = args.custom_prompt or "<s1> <s1_1> A profile sitting next to a tree with a Christmas spirit."
     prompt2 = prompt
     prompt = str(prompt)

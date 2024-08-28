@@ -17,7 +17,10 @@ def main(args):
     exp_name = str(cfg.exp_name)
     sd_model = build_stable_diffusion(cfg.model)
     device = "cuda:0"
-
+    img_path = '/content/drive/MyDrive/KoreaUniv/MLV_Lab/Summer_Project/model_dumps/vis/'
+    os.makedirs(img_path+cfg.exp_name,exist_ok=True)
+    
+    
     vae = sd_model[0].to(device)
     unet = sd_model[1].to(device)
     noise_scheduler = sd_model[2]
@@ -48,7 +51,7 @@ def main(args):
         args.model_path
     )
 
-    prompt = args.custom_prompt or "<s1> <s1_1> A profile sitting next to a tree with a Christmas spirit."
+    prompt = args.prompt or "<s1> <s1_1> A profile sitting next to a tree with a Christmas spirit."
     prompt2 = prompt
     prompt = str(prompt)
     prompt = prompt.replace('dog', '<s1> <s1_1>')
